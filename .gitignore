@@ -4,3 +4,8 @@ README.txt
 demos/
 extras/documentation
 
+
+/vendor/
+.idea
+bin
+build
