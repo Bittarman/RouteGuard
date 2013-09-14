@@ -1,0 +1,25 @@
+{
+    "name": "bittarman/route-guard",
+    "description": "A simple access control module for Zend Framework 2",
+    "require-dev": {
+        "zendframework/zendframework": ">= 2.2.4",
+        "phpunit/phpunit": ">= 3.7.26"
+    },
+    "license": "BSD 3-Clause (https://github.com/Bittarman/RouteGuard/blob/master/LICENSE)",
+    "authors": [
+        {
+            "name": "Ryan Mauger",
+            "email": "ryan@rmauger.co.uk"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {
+
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": {"RouteGuard\\": "src/"}
+    }
+}
