@@ -10,12 +10,12 @@
 namespace RouteGuard\Guard\Factory;
 
 use RouteGuard\Guard\InstanceLoader;
-use RouteGuard\Guard\InstanceLoaderConfig;
+use RouteGuard\Guard\GuardLoaderConfig;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class InstanceLoaderFactory implements FactoryInterface
+class GuardLoaderFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -26,8 +26,8 @@ class InstanceLoaderFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
-        $config = new InstanceLoaderConfig($config['guard']['instance_loader']);
-        $loader = new InstanceLoader($config);
+        $config = new GuardLoaderConfig($config['guard']['instance_loader']);
+        $loader = new GuardLoader($config);
         return $loader;
     }
 

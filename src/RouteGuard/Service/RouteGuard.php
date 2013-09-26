@@ -11,14 +11,21 @@ namespace RouteGuard\Guard;
 
 use RouteGuard\Guard\InstanceLoader;
 use RouteGuard\UnauthorizedAccessException;
+use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\ListenerAggregateInterface;
 use Zend\Mvc\MvcEvent;
 
-class RouteGuard
+class RouteGuard implements ListenerAggregateInterface
 {
     /**
      * @var array
      */
     protected $guards = array();
+
+    /**
+     * @var array
+     */
+    protected $listeners = array();
 
     /**
      * @var InstanceLoader
@@ -67,4 +74,37 @@ class RouteGuard
         }
         return true;
     }
+
+    /**
+     * Attach one or more listeners
+     *
+     * Implementors may add an optional $priority argument; the EventManager
+     * implementation will pass this to the aggregate.
+     *
+     * @param EventManagerInterface $events
+     *
+     * @return void
+     */
+    public function attach(EventManagerInterface $events)
+    {
+        $this->listeners[] = $events->attach('onRoute', array($this, 'onRoute'));
+    }
+
+    /**
+     * Detach all previously attached listeners
+     *
+     * @param EventManagerInterface $events
+     *
+     * @return void
+     */
+    public function detach(EventManagerInterface $events)
+    {
+        foreach ($this->listeners as $index => $listener) {
+            if ($events->detach($listener)) {
+                unset($this->listeners[$index]);
+            }
+        }
+    }
+
+
 } 

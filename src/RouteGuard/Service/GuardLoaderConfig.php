@@ -13,7 +13,7 @@ namespace RouteGuard\Guard;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\ServiceManager;
 
-class InstanceLoaderConfig implements ConfigInterface
+class GuardLoaderConfig implements ConfigInterface
 {
     protected $config = array();
 

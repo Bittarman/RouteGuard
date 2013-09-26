@@ -3,7 +3,8 @@
     "description": "A simple access control module for Zend Framework 2",
     "require-dev": {
         "zendframework/zendframework": ">= 2.2.4",
-        "phpunit/phpunit": ">= 3.7.26"
+        "phpunit/phpunit": ">= 3.7.26",
+        "mockery/mockery": "dev-master@dev"
     },
     "license": "BSD-3-Clause",
     "authors": [

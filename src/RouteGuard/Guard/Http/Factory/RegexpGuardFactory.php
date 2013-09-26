@@ -7,16 +7,17 @@
  * @license https://github.com/Bittarman/RouteGuard/blob/master/LICENSE
  */
 
-namespace RouteGuard\Guard\Http;
+namespace RouteGuard\Guard\Http\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use RouteGuard\Guard\Http\Regexp;
 
-class RegexpInstanceFactory implements FactoryInterface
+class RegexpGuardFactory implements FactoryInterface
 {
     protected $creationOptions = array();
 
-    public function __construct($options)
+    public function __construct(array $options)
     {
         $this->setCreationOptions($options);
     }
