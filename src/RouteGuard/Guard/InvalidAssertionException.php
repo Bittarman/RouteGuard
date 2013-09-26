@@ -15,4 +15,4 @@ use RouteGuard\RouteGuardException;
 class InvalidAssertionException extends InvalidArgumentException implements RouteGuardException
 {
 
-} 
+}

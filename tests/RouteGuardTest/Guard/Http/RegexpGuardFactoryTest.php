@@ -9,11 +9,9 @@
 
 namespace RouteGuardTest\Guard\Http;
 
-
 use RouteGuard\Assertion\ZF2Authentication\IsLoggedIn;
 use RouteGuard\Guard\Http\Factory\RegexpGuardFactory;
 use Mockery;
-
 
 class RegexpGuardFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,4 +34,4 @@ class RegexpGuardFactoryTest extends \PHPUnit_Framework_TestCase
         $regexpGuard = $factory->createService($serviceManagerMock);
 
     }
-} 
+}

@@ -9,7 +9,6 @@
 
 namespace RouteGuard\Guard\Factory;
 
-
 use RouteGuard\Guard\RouteGuard;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -19,13 +18,14 @@ class RouteGuardFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param  ServiceLocatorInterface $serviceLocator
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('config');
-        return new RouteGuard(isset($config['guards']) ? $config['guards'] : [], $serviceLocator->get('RouteGuard\Service\InstanceLoader'));
+        $guardConfig = isset($config['guards']) ? $config['guards'] : [];
+        return new RouteGuard($guardConfig, $serviceLocator->get('RouteGuard\Service\InstanceLoader'));
     }
 
-} 
+}

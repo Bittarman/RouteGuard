@@ -9,7 +9,6 @@
 
 namespace RouteGuard\Guard;
 
-
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\ServiceManager;
 
@@ -25,7 +24,7 @@ class GuardLoaderConfig implements ConfigInterface
     /**
      * Configure service manager
      *
-     * @param ServiceManager $serviceManager
+     * @param  ServiceManager $serviceManager
      * @return void
      */
     public function configureServiceManager(ServiceManager $serviceManager)
@@ -46,4 +45,4 @@ class GuardLoaderConfig implements ConfigInterface
         }
     }
 
-} 
+}

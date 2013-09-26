@@ -24,7 +24,7 @@ class RegexpGuardFactory implements FactoryInterface
     /**
      * Create service
      *
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param  ServiceLocatorInterface $serviceLocator
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -37,6 +37,7 @@ class RegexpGuardFactory implements FactoryInterface
                 $options['assertion'] = $sm->get($options['assertion']);
             }
         }
+
         return new Regexp($options);
     }
 
@@ -50,4 +51,4 @@ class RegexpGuardFactory implements FactoryInterface
         return $this->creationOptions;
     }
 
-} 
+}

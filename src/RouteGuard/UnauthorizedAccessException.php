@@ -14,4 +14,4 @@ use RuntimeException;
 class UnauthorizedAccessException extends RuntimeException implements RouteGuardException
 {
 
-} 
+}

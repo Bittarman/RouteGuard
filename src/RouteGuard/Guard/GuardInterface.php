@@ -9,7 +9,6 @@
 
 namespace RouteGuard\Guard;
 
-
 use Zend\Stdlib\RequestInterface;
 
 interface GuardInterface
@@ -19,4 +18,4 @@ interface GuardInterface
      * @return bool
      */
     public function isAllowed(RequestInterface $name);
-} 
+}

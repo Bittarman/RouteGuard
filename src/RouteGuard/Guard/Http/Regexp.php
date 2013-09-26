@@ -31,7 +31,7 @@ class Regexp implements GuardInterface
      */
     public function __construct(array $options)
     {
-        if (isset($options['regexp'])){
+	if (isset($options['regexp'])) {
             $this->setRegexp($options['regexp']);
         }
         if (isset($options['assertion'])) {
@@ -43,7 +43,7 @@ class Regexp implements GuardInterface
      * Check if the guard applies to the request,
      * then apply the assigned assertion.
      *
-     * @param \Zend\Stdlib\RequestInterface $uri
+     * @param  \Zend\Stdlib\RequestInterface $uri
      * @return bool
      */
     public function isAllowed(RequestInterface $uri)
@@ -51,11 +51,13 @@ class Regexp implements GuardInterface
         if (preg_match(sprintf('#^%s$#', $this->regexp), $uri->getUri()->getPath())) {
             if (isset($this->assertion)) {
                 $assertion = $this->assertion;
+
                 return $assertion();
             } else {
                 return true;
             }
         }
+
         return true;
     }
 
@@ -77,4 +79,4 @@ class Regexp implements GuardInterface
         }
         $this->assertion = $assertion;
     }
-} 
+}

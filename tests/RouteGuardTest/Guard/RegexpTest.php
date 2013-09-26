@@ -9,7 +9,6 @@
 
 namespace RouteGuardTest\Guard;
 
-
 use RouteGuard\Guard\Http\Regexp;
 use Zend\Http\Request as HttpRequest;
 
@@ -81,9 +80,6 @@ class RegexpTest extends \PHPUnit_Framework_TestCase
             'assertion' => 'test'
         ));
 
-
     }
 
-
 }
- 

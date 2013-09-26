@@ -9,11 +9,10 @@
 
 namespace RouteGuard\Assertion\ZF2Authentication;
 
-
 class IsLoggedIn
 {
     public function __invoke()
     {
         return true;
     }
-} 
+}

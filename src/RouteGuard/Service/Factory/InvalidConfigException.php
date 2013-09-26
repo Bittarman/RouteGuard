@@ -15,4 +15,4 @@ use RuntimeException;
 class InvalidConfigException  extends RuntimeException implements RouteGuardException
 {
 
-} 
+}

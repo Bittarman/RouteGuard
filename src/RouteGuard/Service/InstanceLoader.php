@@ -9,10 +9,8 @@
 
 namespace RouteGuard\Guard;
 
-use Zend\Di\ServiceLocator;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ConfigInterface;
-use Zend\ServiceManager\Exception;
 
 class InstanceLoader extends AbstractPluginManager
 {
@@ -27,9 +25,8 @@ class InstanceLoader extends AbstractPluginManager
         return $this->get($type, $config, false);
     }
 
-
     /**
-     * @param mixed $plugin
+     * @param  mixed             $plugin
      * @return bool|void
      * @throws \RuntimeException
      */
@@ -38,7 +35,8 @@ class InstanceLoader extends AbstractPluginManager
         if (!$plugin instanceof GuardInterface) {
             throw new \RuntimeException('Invalid plugin');
         }
+
         return true;
     }
 
-} 
+}

@@ -8,6 +8,6 @@
  */
 namespace RouteGuard;
 
-interface RouteGuardException {
-
-} 
+interface RouteGuardException
+{
+}

@@ -61,17 +61,19 @@ class RouteGuard implements ListenerAggregateInterface
             $app = $event->getTarget();
             $event->setParam('exception', new UnauthorizedAccessException('You are not currently allowed access to this page'));
             $app->getEventManager()->trigger(MvcEvent::EVENT_DISPATCH_ERROR, $event);
+
             return false;
         }
     }
 
     public function isAllowed($uri)
     {
-        foreach($this->guards as $guard) {
+	foreach ($this->guards as $guard) {
             if (!$guard->isAllowed($uri)) {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -106,5 +108,4 @@ class RouteGuard implements ListenerAggregateInterface
         }
     }
 
-
-} 
+}
