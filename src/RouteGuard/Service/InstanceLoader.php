@@ -7,10 +7,11 @@
  * @license https://github.com/Bittarman/RouteGuard/blob/master/LICENSE
  */
 
-namespace RouteGuard\Guard;
+namespace RouteGuard\Service;
 
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ConfigInterface;
+use RouteGuard\Guard\GuardInterface;
 
 class InstanceLoader extends AbstractPluginManager
 {

@@ -4,7 +4,9 @@ return [
     'service_manager' => [
         'factories' => [
             'RouteGuard\Service\RouteGuard' => 'RouteGuard\Service\Factory\RouteGuardFactory',
-            'RouteGuard\Service\GuardLoader' => 'RouteGuard\Service\Factory\GuardLoaderFactory'
+            'RouteGuard\Service\InstanceLoader' => 'RouteGuard\Service\Factory\InstanceLoaderFactory',
+            'RouteGuard\Service\GuardLoader' => 'RouteGuard\Service\Factory\GuardLoaderFactory',
+            'RouteGuard\Assertion\ZF2Authentication\IsLoggedIn' => 'RouteGuard\Assertion\ZF2Authentication\Factory\IsLoggedInFactory',
         ]
     ],
     'guard' => [

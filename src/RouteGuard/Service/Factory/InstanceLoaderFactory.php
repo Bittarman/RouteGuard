@@ -7,10 +7,10 @@
  * @license https://github.com/Bittarman/RouteGuard/blob/master/LICENSE
  */
 
-namespace RouteGuard\Guard\Factory;
+namespace RouteGuard\Service\Factory;
 
-use RouteGuard\Guard\GuardLoaderConfig;
-use Zend\ServiceManager\Config;
+use RouteGuard\Service\GuardLoaderConfig;
+use RouteGuard\Service\InstanceLoader;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -26,7 +26,7 @@ class InstanceLoaderFactory implements FactoryInterface
     {
         $config = $serviceLocator->get('config');
         $config = new GuardLoaderConfig($config['guard']['instance_loader']);
-        $loader = new GuardLoader($config);
+        $loader = new InstanceLoader($config);
 
         return $loader;
     }

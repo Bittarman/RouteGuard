@@ -9,10 +9,22 @@
 
 namespace RouteGuard\Assertion\ZF2Authentication;
 
+use Zend\Authentication\AuthenticationService;
+
 class IsLoggedIn
 {
+    /**
+     * @var \Zend\Authentication\AuthenticationService
+     */
+    protected $service;
+
+    public function __construct(AuthenticationService $service)
+    {
+        $this->service = $service;
+    }
+
     public function __invoke()
     {
-        return true;
+        return $this->service->hasIdentity();
     }
 }

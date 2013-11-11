@@ -24,7 +24,7 @@ class Module implements
     {
         /** @var \RouteGuard\Guard\InstanceLoader $instanceLoader */
 
-        $service = $event->getApplication()->getServiceManager()->get('RouteGuard');
+        $service = $event->getApplication()->getServiceManager()->get('RouteGuard\Service\RouteGuard');
 
         /** @var \Zend\EventManager\EventManager $em */
         $em = $event->getApplication()->getEventManager();

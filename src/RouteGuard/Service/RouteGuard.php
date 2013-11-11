@@ -7,10 +7,11 @@
  * @license https://github.com/Bittarman/RouteGuard/blob/master/LICENSE
  */
 
-namespace RouteGuard\Guard;
+namespace RouteGuard\Service;
 
-use RouteGuard\Guard\InstanceLoader;
+use RouteGuard\Service\InstanceLoader;
 use RouteGuard\UnauthorizedAccessException;
+use RouteGuard\Guard\GuardInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\Mvc\MvcEvent;
@@ -68,12 +69,11 @@ class RouteGuard implements ListenerAggregateInterface
 
     public function isAllowed($uri)
     {
-	foreach ($this->guards as $guard) {
+	    foreach ($this->guards as $guard) {
             if (!$guard->isAllowed($uri)) {
                 return false;
             }
         }
-
         return true;
     }
 
@@ -89,7 +89,7 @@ class RouteGuard implements ListenerAggregateInterface
      */
     public function attach(EventManagerInterface $events)
     {
-        $this->listeners[] = $events->attach('onRoute', array($this, 'onRoute'));
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_ROUTE, array($this, 'onRoute'));
     }
 
     /**
