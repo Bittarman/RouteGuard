@@ -25,13 +25,15 @@ class RegexpGuardFactoryTest extends \PHPUnit_Framework_TestCase
         );
         $serviceManagerMock = Mockery::mock('Zend\ServiceManager\ServiceManager');
         $serviceLocatorMock = Mockery::mock('Zend\ServiceManager\ServiceManager');
+        $isLoggedInMock     = Mockery::mock('RouteGuard\Assertion\ZF2Authentication\IsLoggedIn');
 
         $serviceManagerMock->shouldReceive('getServiceLocator')->times(1)->andReturn($serviceLocatorMock);
 
-        $serviceLocatorMock->shouldReceive('get')->times(1)->andReturn(new IsLoggedIn());
+        $serviceLocatorMock->shouldReceive('get')->times(1)->andReturn($isLoggedInMock);
         $serviceLocatorMock->shouldReceive('has')->times(1)->andReturn(true);
 
         $regexpGuard = $factory->createService($serviceManagerMock);
 
+        $this->assertInstanceOf('RouteGuard\Guard\Http\Regexp', $regexpGuard);
     }
 }
