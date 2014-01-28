@@ -9,7 +9,6 @@
 
 namespace RouteGuardTest\Guard\Http;
 
-use RouteGuard\Assertion\Zf2Authentication\IsLoggedIn;
 use RouteGuard\Guard\Http\Factory\RegexpGuardFactory;
 use Mockery;
 
