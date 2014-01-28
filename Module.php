@@ -9,7 +9,6 @@
 
 namespace RouteGuard;
 
-
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
@@ -20,10 +19,16 @@ class Module implements
     AutoloaderProviderInterface,
     BootstrapListenerInterface
 {
+    /**
+     * @param EventInterface $event
+     *
+     * @return array|void
+     */
     public function onBootstrap(EventInterface $event)
     {
-        /** @var \RouteGuard\Guard\InstanceLoader $instanceLoader */
+        /** @var \Zend\Mvc\MvcEvent $event */
 
+        /** @var Service\RouteGuard $service */
         $service = $event->getApplication()->getServiceManager()->get('RouteGuard\Service\RouteGuard');
 
         /** @var \Zend\EventManager\EventManager $em */

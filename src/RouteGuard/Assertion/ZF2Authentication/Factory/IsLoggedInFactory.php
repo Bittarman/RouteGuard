@@ -9,6 +9,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class IsLoggedInFactory
+ *
  * @package RouteGuard\Assertion\ZF2Authentication\Factory
  */
 class IsLoggedInFactory implements FactoryInterface
@@ -17,6 +18,7 @@ class IsLoggedInFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
+     *
      * @return mixed
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
@@ -24,8 +26,9 @@ class IsLoggedInFactory implements FactoryInterface
         /**
          * @var \Zend\Authentication\AuthenticationService $service
          */
-        $service = $serviceLocator->get('Zend\Authentication\AuthenticationService');
+        $service   = $serviceLocator->get('Zend\Authentication\AuthenticationService');
         $assertion = new IsLoggedIn($service);
+
         return $assertion;
     }
 

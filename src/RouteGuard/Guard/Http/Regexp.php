@@ -9,7 +9,6 @@
 
 namespace RouteGuard\Guard\Http;
 
-use Zend\Mvc\Request;
 use Zend\Stdlib\RequestInterface;
 use RouteGuard\Guard\GuardInterface;
 use RouteGuard\Guard\InvalidAssertionException;
@@ -31,7 +30,7 @@ class Regexp implements GuardInterface
      */
     public function __construct(array $options)
     {
-	if (isset($options['regexp'])) {
+        if (isset($options['regexp'])) {
             $this->setRegexp($options['regexp']);
         }
         if (isset($options['assertion'])) {
@@ -71,6 +70,8 @@ class Regexp implements GuardInterface
 
     /**
      * @param callable $assertion
+     *
+     * @throws \RouteGuard\Guard\InvalidAssertionException
      */
     public function setAssertion($assertion)
     {

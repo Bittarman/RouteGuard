@@ -14,8 +14,14 @@ use Zend\ServiceManager\ServiceManager;
 
 class GuardLoaderConfig implements ConfigInterface
 {
+    /**
+     * @var array
+     */
     protected $config = array();
 
+    /**
+     * @param array $config
+     */
     public function __construct(array $config)
     {
         $this->config = $config;
@@ -38,10 +44,14 @@ class GuardLoaderConfig implements ConfigInterface
         }
     }
 
-    public function configureFactories(ServiceManager $sm, $config)
+    /**
+     * @param ServiceManager $serviceManager
+     * @param                $config
+     */
+    public function configureFactories(ServiceManager $serviceManager, $config)
     {
         foreach ($config as $key => $value) {
-            $sm->setFactory($key, $value, false);
+            $serviceManager->setFactory($key, $value, false);
         }
     }
 
