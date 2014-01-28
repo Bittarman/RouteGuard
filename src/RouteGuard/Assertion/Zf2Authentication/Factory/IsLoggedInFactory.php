@@ -1,16 +1,16 @@
 <?php
 
 
-namespace RouteGuard\Assertion\ZF2Authentication\Factory;
+namespace RouteGuard\Assertion\Zf2Authentication\Factory;
 
-use RouteGuard\Assertion\ZF2Authentication\IsLoggedIn;
+use RouteGuard\Assertion\Zf2Authentication\IsLoggedIn;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class IsLoggedInFactory
  *
- * @package RouteGuard\Assertion\ZF2Authentication\Factory
+ * @package RouteGuard\Assertion\Zf2Authentication\Factory
  */
 class IsLoggedInFactory implements FactoryInterface
 {
