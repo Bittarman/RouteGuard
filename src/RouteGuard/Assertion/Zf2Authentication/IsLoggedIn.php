@@ -7,7 +7,7 @@
  * @license https://github.com/Bittarman/RouteGuard/blob/master/LICENSE
  */
 
-namespace RouteGuard\Assertion\ZF2Authentication;
+namespace RouteGuard\Assertion\Zf2Authentication;
 
 use Zend\Authentication\AuthenticationService;
 

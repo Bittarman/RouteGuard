@@ -9,7 +9,6 @@
 
 namespace RouteGuardTest\Guard\Http;
 
-use RouteGuard\Assertion\ZF2Authentication\IsLoggedIn;
 use RouteGuard\Guard\Http\Factory\RegexpGuardFactory;
 use Mockery;
 
@@ -25,7 +24,7 @@ class RegexpGuardFactoryTest extends \PHPUnit_Framework_TestCase
         );
         $serviceManagerMock = Mockery::mock('Zend\ServiceManager\ServiceManager');
         $serviceLocatorMock = Mockery::mock('Zend\ServiceManager\ServiceManager');
-        $isLoggedInMock     = Mockery::mock('RouteGuard\Assertion\ZF2Authentication\IsLoggedIn');
+        $isLoggedInMock     = Mockery::mock('RouteGuard\Assertion\Zf2Authentication\IsLoggedIn');
 
         $serviceManagerMock->shouldReceive('getServiceLocator')->times(1)->andReturn($serviceLocatorMock);
 

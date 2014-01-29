@@ -9,17 +9,17 @@
 
 namespace RouteGuard\Service;
 
-use RouteGuard\Service\InstanceLoader;
 use RouteGuard\UnauthorizedAccessException;
 use RouteGuard\Guard\GuardInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\Mvc\MvcEvent;
+use Zend\Stdlib\RequestInterface;
 
 class RouteGuard implements ListenerAggregateInterface
 {
     /**
-     * @var array
+     * @var GuardInterface[]
      */
     protected $guards = array();
 
@@ -33,6 +33,10 @@ class RouteGuard implements ListenerAggregateInterface
      */
     protected $instanceLoader;
 
+    /**
+     * @param array          $guards
+     * @param InstanceLoader $instanceLoader
+     */
     public function __construct(array $guards, InstanceLoader $instanceLoader)
     {
         $this->instanceLoader = $instanceLoader;
@@ -44,6 +48,9 @@ class RouteGuard implements ListenerAggregateInterface
         }
     }
 
+    /**
+     * @param GuardInterface $guard
+     */
     public function addGuard(GuardInterface $guard)
     {
         $this->guards[] = $guard;
@@ -51,6 +58,8 @@ class RouteGuard implements ListenerAggregateInterface
 
     /**
      * @param MvcEvent $event
+     *
+     * @return bool
      */
     public function onRoute(MvcEvent $event)
     {
@@ -60,16 +69,24 @@ class RouteGuard implements ListenerAggregateInterface
             $event->setError('error-unauthorized-route');
             /* @var $app \Zend\Mvc\Application */
             $app = $event->getTarget();
-            $event->setParam('exception', new UnauthorizedAccessException('You are not currently allowed access to this page'));
+            $exception = new UnauthorizedAccessException('You are not currently allowed access to this page');
+            $event->setParam('exception', $exception);
             $app->getEventManager()->trigger(MvcEvent::EVENT_DISPATCH_ERROR, $event);
 
             return false;
         }
+
+        return true;
     }
 
-    public function isAllowed($uri)
+    /**
+     * @param RequestInterface $uri
+     *
+     * @return bool
+     */
+    public function isAllowed(RequestInterface $uri)
     {
-	    foreach ($this->guards as $guard) {
+        foreach ($this->guards as $guard) {
             if (!$guard->isAllowed($uri)) {
                 return false;
             }

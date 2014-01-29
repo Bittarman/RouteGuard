@@ -15,7 +15,9 @@ use RouteGuard\Guard\GuardInterface;
 
 class InstanceLoader extends AbstractPluginManager
 {
-
+    /**
+     * @param ConfigInterface $configuration
+     */
     public function __construct(ConfigInterface $configuration)
     {
         parent::__construct($configuration);
@@ -39,5 +41,4 @@ class InstanceLoader extends AbstractPluginManager
 
         return true;
     }
-
 }

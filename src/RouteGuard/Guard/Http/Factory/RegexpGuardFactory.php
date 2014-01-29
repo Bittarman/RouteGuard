@@ -32,9 +32,9 @@ class RegexpGuardFactory implements FactoryInterface
         /** @var \Zend\ServiceManager\AbstractPluginManager $serviceLocator */
         $options = $this->getCreationOptions();
         if (isset($options['assertion']) && is_string($options['assertion'])) {
-            $sm = $serviceLocator->getServiceLocator();
-            if ($sm->has($options['assertion'])) {
-                $options['assertion'] = $sm->get($options['assertion']);
+            $serviceManager = $serviceLocator->getServiceLocator();
+            if ($serviceManager->has($options['assertion'])) {
+                $options['assertion'] = $serviceManager->get($options['assertion']);
             }
         }
 
