@@ -9,6 +9,7 @@
 
 namespace RouteGuard\Service;
 
+use RouteGuard\Guard\Http\Factory\GuardFactoryInterface;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ConfigInterface;
 use RouteGuard\Guard\GuardInterface;
@@ -25,7 +26,22 @@ class InstanceLoader extends AbstractPluginManager
 
     public function factory($type, array $config)
     {
+        $this->setFactoryCreationOptions($type, $config);
+
         return $this->get($type, $config, false);
+    }
+
+    private function setFactoryCreationOptions($type, array $config)
+    {
+        $factoryKey = strtolower($type);
+        if (array_key_exists($factoryKey, $this->factories)) {
+            /** @var GuardFactoryInterface $factory */
+            $factory = $this->factories[$factoryKey];
+
+            if ($factory instanceof GuardFactoryInterface) {
+                $factory->setCreationOptions($config);
+            }
+        }
     }
 
     /**
