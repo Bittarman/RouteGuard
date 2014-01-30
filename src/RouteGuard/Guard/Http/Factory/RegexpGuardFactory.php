@@ -13,10 +13,16 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use RouteGuard\Guard\Http\Regexp;
 
-class RegexpGuardFactory implements FactoryInterface
+class RegexpGuardFactory implements FactoryInterface, GuardFactoryInterface
 {
+    /**
+     * @var array
+     */
     protected $creationOptions = array();
 
+    /**
+     * @param array $options
+     */
     public function __construct(array $options)
     {
         $this->setCreationOptions($options);
@@ -41,11 +47,17 @@ class RegexpGuardFactory implements FactoryInterface
         return new Regexp($options);
     }
 
+    /**
+     * @param array $options
+     */
     public function setCreationOptions($options)
     {
         $this->creationOptions = $options;
     }
 
+    /**
+     * @return array
+     */
     public function getCreationOptions()
     {
         return $this->creationOptions;
