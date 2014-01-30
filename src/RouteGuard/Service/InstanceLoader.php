@@ -24,6 +24,12 @@ class InstanceLoader extends AbstractPluginManager
         parent::__construct($configuration);
     }
 
+    /**
+     * @param string $type
+     * @param array  $config
+     *
+     * @return object
+     */
     public function factory($type, array $config)
     {
         $this->setFactoryCreationOptions($type, $config);
@@ -31,6 +37,10 @@ class InstanceLoader extends AbstractPluginManager
         return $this->get($type, $config, false);
     }
 
+    /**
+     * @param string $type
+     * @param array $config
+     */
     private function setFactoryCreationOptions($type, array $config)
     {
         $factoryKey = strtolower($type);
@@ -46,6 +56,7 @@ class InstanceLoader extends AbstractPluginManager
 
     /**
      * @param  mixed             $plugin
+     * 
      * @return bool|void
      * @throws \RuntimeException
      */

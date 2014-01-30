@@ -18,11 +18,17 @@ class IsLoggedIn
      */
     protected $service;
 
+    /**
+     * @param AuthenticationService $service
+     */
     public function __construct(AuthenticationService $service)
     {
         $this->service = $service;
     }
 
+    /**
+     * @return bool
+     */
     public function __invoke()
     {
         return $this->service->hasIdentity();
